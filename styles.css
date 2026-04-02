@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf")
+    format("truetype");
+}
+
+:root {
+  --clr-white: hsl(0 100 100);
+  --clr-black: hsl(0 0 0);
+  --clr-grey-300: hsl(233 8 79);
+  --clr-grey-200: hsl(0 0 85);
+  --clr-navy-950: hsl(240 100 5);
+  --clr-navy-600: hsl(236 13 42);
+  --clr-gold: hsl(35 77 62);
+  --clr-red-500: hsl(4 85 63);
+
+  --fs-heading-small: 1.125rem;
+
+  --fw-bold: 700;
+  --fw-xbold: 800;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: var(--fw-regular);
+  color: var(--clr-navy-600);
+}
+
+h1,
+h3 {
+  color: var(--clr-navy-950);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 1.868rem + 2.105vw, 3.5rem);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  color: var(--clr-gold);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* COMPOSITION - Layout primitives */
+
+.page-layout {
+  --page-max-width: 70rem;
+  --page-padding-inline: 1rem;
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--page-padding-inline), 1fr)
+    [content-start]
+    min(100% - (var(--page-padding-inline) * 2), var(--page-max-width))
+    [content-end]
+    minmax(var(--page-padding-inline), 1fr);
+
+  > * {
+    grid-column: content;
+  }
+}
+
+/* UTILITIES - Single-purpose classes */
+
+/* BLOCKS - Component-specific styles */
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 2.5rem;
+  }
+}
+
+section {
+  --min-column-size: 340px;
+  --column-count: 3;
+  --gap: 2rem;
+
+  --breakpoint: calc(
+    (
+      var(--min-column-size) * var(--column-count) +
+        (var(--gap) * (var(--column-count) - 1))
+    )
+  );
+  --column-size: calc((100% / var(--column-count)) - var(--gap));
+
+  counter-reset: article-number;
+
+  display: grid;
+  row-gap: var(--gap);
+  column-gap: 2.5rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      min(max(var(--column-size), ((100% - var(--breakpoint)) * -999)), 100%),
+      1fr
+    )
+  );
+
+  article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.5rem;
+    align-items: center;
+  }
+
+  .article-text {
+    counter-increment: article-number;
+    display: inherit;
+    gap: 0.5rem;
+
+    &::before {
+      content: "0" counter(article-number);
+      font-size: 2rem;
+      font-weight: var(--fw-bold);
+      color: var(--clr-red-500);
+      line-height: 1;
+    }
+  }
+
+  img {
+    order: -1;
+    grid-column: 1 / 2;
+    height: 8rem;
+  }
+}
+
+/* EXCEPTIONS - Context-specific overrides */
