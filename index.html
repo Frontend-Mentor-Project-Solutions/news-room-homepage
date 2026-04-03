@@ -33,34 +33,31 @@
         </nav>
       </header>
 
-      <main
-        class="switcher"
-        style="--switcher-gap: 2rem; --switcher-threshold: 65rem"
-      >
-        <article class="hero" style="--switcher-col-ratio: 3">
-          <div
-            class="hero-content switcher"
-            style="--switcher-gap: 1.5rem; --switcher-threshold: 48rem"
-          >
-            <h1>The Bright Future of Web 3.0?</h1>
+      <main>
+        <article class="hero">
+          <h1>The Bright Future of Web 3.0?</h1>
 
-            <p>
-              We dive into the next evolution of the web that claims to put the
-              power of the platforms back into the hands of the people. But is
-              it really fullfilling its promise?
+          <p>
+            We dive into the next evolution of the web that claims to put the
+            power of the platforms back into the hands of the people. But is it
+            really fullfilling its promise?
+          </p>
 
-              <a href="#">Read more</a>
-            </p>
-          </div>
+          <a href="#" class="button">Read more</a>
 
-          <img
-            class="image-order"
-            src="assets/images/image-web-3-desktop.jpg"
-            alt="Colorful 3D puzzle pieces and gaming controller representing Web 3.0 technology"
-          />
+          <picture class="image-order">
+            <source
+              srcset="assets/images/image-web-3-desktop.jpg"
+              media="(width >= 480px)"
+            />
+            <img
+              src="assets/images/image-web-3-mobile.jpg"
+              alt="Colorful 3D puzzle pieces and gaming controller representing Web 3.0 technology"
+            />
+          </picture>
         </article>
 
-        <aside style="--switcher-col-ratio: 1">
+        <aside>
           <h2>New</h2>
 
           <article>
@@ -93,19 +90,14 @@
             </p>
           </article>
         </aside>
-      </main>
 
-      <section
-        class="switcher"
-        style="--switcher-gap: 2rem; --switcher-threshold: 65rem"
-      >
-        <a href="#">
+        <section>
           <article>
-            <div class="article-text">
+            <a href="#">
               <h3>Reviving Retro PCs</h3>
+            </a>
 
-              <p>What happens when old PCs are given modern upgrades?</p>
-            </div>
+            <p>What happens when old PCs are given modern upgrades?</p>
 
             <img
               class="image-order"
@@ -113,15 +105,13 @@
               alt="Vintage computer with glowing blue screen and keyboard"
             />
           </article>
-        </a>
 
-        <a href="#">
           <article>
-            <div class="article-text">
+            <a href="#">
               <h3>Top 10 Laptops of 2022</h3>
+            </a>
 
-              <p>Our best picks for various needs and budgets.</p>
-            </div>
+            <p>Our best picks for various needs and budgets.</p>
 
             <img
               class="image-order"
@@ -129,15 +119,13 @@
               alt="Modern laptop keyboard and mouse on desk"
             />
           </article>
-        </a>
 
-        <a href="#">
           <article>
-            <div class="article-text">
+            <a href="#">
               <h3>The Growth of Gaming</h3>
+            </a>
 
-              <p>How the pandemic has sparked fresh opportunities.</p>
-            </div>
+            <p>How the pandemic has sparked fresh opportunities.</p>
 
             <img
               class="image-order"
@@ -145,8 +133,8 @@
               alt="Gaming controller and equipment"
             />
           </article>
-        </a>
-      </section>
+        </section>
+      </main>
     </div>
   </body>
 </html>

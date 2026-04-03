@@ -65,14 +65,61 @@ h3 {
   }
 }
 
-.switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--switcher-gap, 1.5rem);
+main {
+  display: grid;
+  row-gap: 4rem;
 
-  > * {
-    flex-grow: var(--switcher-col-ratio, 1);
-    flex-basis: calc((var(--switcher-threshold, 48rem) - 100%) * 999);
+  /* mobile view */
+  .hero {
+    display: grid;
+    grid-template-columns: subgrid;
+    row-gap: 1.5rem;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: subgrid;
+    row-gap: 2rem;
+
+    article {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: repeat(3, auto);
+      column-gap: 1.5rem;
+      row-gap: 0.5rem;
+      align-items: center;
+    }
+
+    img {
+      height: 8rem;
+      grid-row: 1 / -1;
+    }
+  }
+
+  /* desktop view */
+  @media (min-width: 70rem) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+
+    .hero {
+      grid-column: 1 / 3;
+    }
+
+    .hero picture {
+      grid-column: 1 / 3;
+    }
+
+    .hero h1 {
+      grid-row: 2 / 4;
+    }
+
+    .hero .button {
+      grid-column: 2 / 3;
+    }
+
+    section {
+      grid-column: 1 / -1;
+    }
   }
 }
 
@@ -94,29 +141,47 @@ header {
     display: flex;
     flex-wrap: wrap;
 
-    gap: 2.5rem;
+    gap: 2.125rem;
   }
 }
 
-.hero {
-  display: grid;
-  gap: 1.5rem;
+.button {
+  color: var(--clr-navy-950);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 4.38px;
+  text-transform: uppercase;
+  background-color: var(--clr-red-500);
+  padding-inline: 2rem;
+  padding-block: 0.75rem;
+  display: block;
+  width: fit-content;
+}
+
+aside {
+  background-color: var(--clr-navy-950);
+  padding-inline: 1.5rem;
+  padding-block: 2rem;
+
+  h3 {
+    color: var(--clr-white);
+  }
+
+  p {
+    color: var(--clr-grey-300);
+  }
+
+  hr {
+    color: var(--clr-navy-600);
+    border-bottom-width: 0;
+  }
 }
 
 section {
   counter-reset: article-number;
 
   article {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 1.5rem;
-    align-items: center;
-  }
-
-  .article-text {
     counter-increment: article-number;
-    display: inherit;
-    gap: 0.5rem;
 
     &::before {
       content: "0" counter(article-number);
@@ -125,11 +190,6 @@ section {
       color: var(--clr-red-500);
       line-height: 1;
     }
-  }
-
-  img {
-    grid-column: 1 / 2;
-    height: 8rem;
   }
 
   h3 {
