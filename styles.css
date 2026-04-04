@@ -150,6 +150,17 @@ header {
   }
 }
 
+a,
+h3 {
+  transition:
+    color 200ms ease-in,
+    background 200ms ease-in;
+
+  &:hover {
+    color: var(--clr-red-500);
+  }
+}
+
 a.button {
   color: var(--clr-navy-950);
   font-size: 0.875rem;
@@ -161,6 +172,11 @@ a.button {
   padding-block: 0.75rem;
   display: block;
   width: fit-content;
+
+  &:hover {
+    background-color: var(--clr-navy-950);
+    color: var(--clr-white);
+  }
 }
 
 button {
@@ -183,6 +199,10 @@ button {
   h3 {
     color: var(--clr-white);
     margin-bottom: calc(var(--flow-space) / 4);
+
+    &:hover {
+      color: var(--clr-gold);
+    }
   }
 
   p {
