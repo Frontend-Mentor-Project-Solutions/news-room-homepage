@@ -126,15 +126,31 @@ header {
   align-items: center;
   padding-block: clamp(2rem, 0.5rem + 5vw, 4rem);
 
+  > nav {
+    display: none;
+  }
+
   ul {
     display: flex;
-    flex-wrap: wrap;
-
     gap: 2.3rem;
+  }
+
+  @media (min-width: 70rem) {
+    > nav {
+      display: initial;
+    }
+
+    > button {
+      display: none;
+    }
+
+    [popover]:popover-open {
+      display: none;
+    }
   }
 }
 
-.button {
+a.button {
   color: var(--clr-navy-950);
   font-size: 0.875rem;
   font-weight: var(--fw-bold);
@@ -145,6 +161,12 @@ header {
   padding-block: 0.75rem;
   display: block;
   width: fit-content;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .new-articles {
@@ -211,4 +233,40 @@ header {
   }
 }
 
+[popover] {
+  border: none;
+
+  transform: translateX(100%);
+  transition:
+    transform 0.4s,
+    overlay 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+  width: clamp(16rem, 10.167rem + 19.444vw, 19.5rem);
+  inset: unset;
+  right: 0;
+  top: 0;
+  height: 100dvh;
+  padding-block: clamp(2rem, 0.5rem + 5vw, 4rem);
+  padding-inline: clamp(1.25rem, -0.417rem + 5.556vw, 2.25rem);
+
+  &:popover-open {
+    transform: translateX(0);
+  }
+
+  &::backdrop {
+    background-color: hsl(from var(--clr-navy-950) h s l / 0.5);
+  }
+
+  button {
+    align-self: end;
+  }
+}
+
 /* EXCEPTIONS - Context-specific overrides */
+
+ul[data-menu="mobile"] {
+  flex-direction: column;
+  font-size: 1.125rem;
+}
